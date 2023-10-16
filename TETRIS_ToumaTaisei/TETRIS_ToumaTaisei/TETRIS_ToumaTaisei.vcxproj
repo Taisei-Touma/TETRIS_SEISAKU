@@ -138,6 +138,7 @@
     <ClInclude Include="Block.h" />
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="FreamControl.h" />
+    <ClInclude Include="GameMainScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
