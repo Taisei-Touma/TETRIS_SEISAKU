@@ -2,6 +2,8 @@
 /**************************
 * マクロ定義
 **************************/
+#define RANKING_INPUT_MODE	(1)
+#define RANKING_DIPS_MODE	(2)
 
 /**************************
 * 型定義
@@ -10,8 +12,9 @@
 /**************************
 * プロトタイプ宣言
 **************************/
-int GameMainScene_Initialize(void);
-void GameMainScene_Update(void);
-void GameMainScene_Draw(void);
+int RankingScene_Initialize(void);
+void RankingScene_Update(void);
+void RankingScene_Draw(void);
 
-int Get_Score(void);
+void Set_RankingMode(int mode);
+void Set_RankingScore(int score);
