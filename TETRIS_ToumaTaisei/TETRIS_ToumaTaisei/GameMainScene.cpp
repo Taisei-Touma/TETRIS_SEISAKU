@@ -90,4 +90,14 @@ void GameMainScene_Draw(void)
 	SetFontSize(20);
 }
 
+/**************************
+* ゲームメイン画面：スコア取得処理
+* 引数：なし
+* 戻り値：なし
+**************************/
+int Get_Score(void)
+{
+	return Score;
+}
+
 
