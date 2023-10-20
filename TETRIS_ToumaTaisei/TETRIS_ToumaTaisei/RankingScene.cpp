@@ -29,11 +29,11 @@ typedef struct
 /**************************
 * グローバル変数
 **************************/
-T_RANKING Ranking_Data[RANKING_MAX];
-T_RANKING New_Score;
-int DispMode;
+T_RANKING Ranking_Data[RANKING_MAX];		//ランキングデータ
+T_RANKING New_Score;						//新しいスコアデータ
+int DispMode;								//表示モード
 
-T_CURSOR Cursor;
+T_CURSOR Cursor;							//カーソル用変数
 int name_num;
 /**************************
 * プロトタイプ宣言
@@ -107,5 +107,94 @@ void RankingScene_Draw(void)
 	switch (DispMode)
 	{
 	case RANKING_INPUT_MODE:
+		ranking_input_name_draw();
+		break;
+
+	case RANKING_DISP_MODE:
+	default:
+		for (i = 0; i < RANKING_MAX; i++)
+		{
+			DrawFormatString(20, 10 + (i * 25),
+				GetColor(255, 255, 255), "%2d, %10s, %10d",
+				Ranking_Data[i].rank, Ranking_Data[i].name, Ranking_Data[i].score);
+		}
+		break;
+	}
+}
+
+/**************************
+* ランキング画面：画面変更処理
+* 引数：なし
+* 戻り値：なし
+**************************/
+void Set_RankingMode(int mode)
+{
+	DispMode = mode;
+}
+
+/**************************
+*ランキング画面：スコア取得処理
+* 引数：なし
+* 戻り値：なし
+**************************/
+void Set_RankingScore(int score)
+{
+	New_Score.score = sore;
+}
+
+/**************************
+*ランキング画面：ファイル読み込み処理
+* 引数：なし
+* 戻り値：なし
+**************************/
+void file_read(void)
+{
+	FILE* fp = NULL;
+	int i;
+
+	OutputDebugString("ファイルを読み込みます");
+	fopen_s(&fp, RANKING_FILE, "r");
+
+	if (fp == NULL)
+	{
+		OutputDebugString("ファイルが読み込めません");
+		OutputDebugString("ファイルを生成します");
+		file_write();
+	}
+	else
+	{
+		for (i = 0; i < RANKING_MAX; i++)
+		{
+			fscanf_s(fp, "%2d, %[^,], %10d \n", &Ranking_Data[i].rank,
+				Ranking_Data[i].name, RANKING_NAME_LEN, &Ranking_Data[i].score);
+		}
+		fclose(fp);
+	}
+}
+
+/**************************
+* ランキング画面：ファイル書き込み処理
+* 引数：なし
+* 戻り値：なし
+**************************/
+void file_write(void)
+{
+	FILE* fp = NULL;
+	int i;
+
+	OutputDebugString("ファイルを書き込みます");
+	fopen_s(&fp, RANKING_FILE, "W");
+
+	if (fp == NULL)
+	{
+		OutputDebugString("ファイルが書き込めません");
+	}
+	else
+	{
+		for (i = 0; i < RANKING_MAX; i++)
+		{
+			fprintf(fp, "%2d, %[^,], %10d \n", Ranking_Data[i].rank,
+				Ranking_Data[i].name, Ranking_Data[i].score);
+		}
 	}
 }
