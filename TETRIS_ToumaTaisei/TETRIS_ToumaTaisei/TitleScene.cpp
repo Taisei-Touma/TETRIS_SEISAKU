@@ -22,7 +22,7 @@ enum
 * グローバル変数
 **************************/
 int cursor_number;
-int sound[E_SOUND_MAX];
+int sounds[E_SOUND_MAX];
 
 /**************************
 * プロトタイプ宣言
@@ -45,8 +45,8 @@ int TitleScene_Initialize(void)
 
 	sounds[E_TITLE_SE_SELECT] = LoadSoundMem("sounds/SE2.mp3");
 
-	ChangeVolumeSoundMem(120, sound[E_TITLE_SE_CURSOR]);
-	ChangeVolumeSoundMem(80, sound[E_TITLE_SE_SELECT]);
+	ChangeVolumeSoundMem(120, sounds[E_TITLE_SE_CURSOR]);
+	ChangeVolumeSoundMem(80, sounds[E_TITLE_SE_SELECT]);
 
 	for (int i = 0; i < E_SOUND_MAX; i++)
 	{
@@ -69,13 +69,13 @@ void TitleScene_Update(void)
 	//BGMが流れていない時に再生
 	if (CheckSoundMem(sounds[E_TITLE_BGM]) != TRUE)
 	{
-		PlaySoundMem(sound[E_TITLE_BGM], DX_PLAYTYPE_BACK, FALSE);
+		PlaySoundMem(sounds[E_TITLE_BGM], DX_PLAYTYPE_BACK, FALSE);
 	}
 
 	if (GetButtonDown(XINPUT_BUTTON_B) == TRUE)
 	{
 		StopSoundMem(sounds[E_TITLE_BGM]);
-		PlaySoundMem(sound[E_TITLE_SE_SELECT], DX_PLAYTYPE_BACK, FALSE);
+		PlaySoundMem(sounds[E_TITLE_SE_SELECT], DX_PLAYTYPE_BACK, FALSE);
 
 		switch (cursor_number)
 		{

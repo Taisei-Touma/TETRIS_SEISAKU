@@ -214,9 +214,9 @@ void ranking_sort(void)
 	Ranking_Data[RANKING_MAX - 1] = New_Score;
 
 	//データのソートを行う
-	for (i = 0; i < RANKING_MAX; j++)
+	for (i = 0; i < RANKING_MAX; i++)
 	{
-		for (j = 0; i < RANKING_MAX; i++)
+		for (j = 0; j < RANKING_MAX; j++)
 		{
 			if (Ranking_Data[i].score < Ranking_Data[j].score)
 			{

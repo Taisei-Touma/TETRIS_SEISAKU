@@ -37,7 +37,7 @@ int EndScene_Initialize(void)
 * ˆø”F‚È‚µ
 * –ß‚è’lF‚È‚µ
 **************************/
-void EndScene_Updete(void)
+void EndScene_Update(void)
 {
 	wait_count++;
 }
