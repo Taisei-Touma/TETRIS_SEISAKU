@@ -94,6 +94,46 @@ void TitleScene_Update(void)
 
 	if (GetButtonDown(XINPUT_BUTTON_DPAD_UP) == TRUE)
 	{
-		PlaySoundMem(so)
+		PlaySoundMem(sounds[E_TITLE_SE_CURSOR], DX_PLAYTYPE_NORMAL, FALSE);
+
+		if (cursor_number <= 0)
+		{
+			cursor_number = 0;
+		}
+		else
+		{
+			cursor_number--;
+		}
+
 	}
+	if (GetButtonUp(XINPUT_BUTTON_DPAD_DOWN) == TRUE)
+	{
+		PlaySoundMem(sounds[E_TITLE_SE_CURSOR], DX_PLAYTYPE_NORMAL, FALSE);
+
+		if (cursor_number >= 2)
+		{
+			cursor_number = 2;
+		}
+		else
+		{
+			cursor_number++;
+		}
+	}
+}
+
+/**************************
+* タイトル画面：描画処理
+* 引数：なし
+* 戻り値：なし
+**************************/
+void TitleScene_Draw(void)
+{
+	SetFontSize(50);
+	DrawString(100, 100, "テトリス", GetColor(255, 255, 255));
+	DrawString(100, 100, "スタート", GetColor(255, 255, 255));
+	DrawString(100, 100, "ランキング", GetColor(255, 255, 255));
+	DrawString(100, 100, "エンド", GetColor(255, 255, 255));
+	SetFontSize(20);
+
+	DrawCircle(275, 325 + (cursor_number * 50), 15, GetColor(255, 0, 0));
 }

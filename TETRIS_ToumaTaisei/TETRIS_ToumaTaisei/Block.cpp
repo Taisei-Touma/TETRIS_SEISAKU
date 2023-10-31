@@ -6,7 +6,7 @@
 * マクロ定義
 ******************************/
 #define FIELD_HEIGHT			(21)	//フィードのマスの高さ
-#define FIElD_WIDTH				(12)	//フィードのマスの幅
+#define FIELD_WIDTH				(12)	//フィードのマスの幅
 #define BLOCK_TROUT_SIZE		(4)		//ブロックのマスサイズ
 #define BLOCK_SIZE				(36)	//１ブロック当たりのサイズ
 #define BLOCK_TYPE_MAX			(7)		//落ちてくるブロックの種類
@@ -18,7 +18,7 @@
 #define DROP_BLOCK_INIT_Y		(-keb1)	//落ちてくるブロックの初期Y座標
 #define DROP_SPEED				(60)	//落下時間
 #define TURN_CROCKWICE			(0)		//時計回りに回転させる
-#define TURN_ANTiCrOckwiCE		(1)		//反時計回りに回転させる
+#define TURN_ANTICROCKWICE		(1)		//反時計回りに回転させる
 
 /******************************
 * 型定義
@@ -91,7 +91,7 @@ const int C_BLOCK_TABLE[BLOCK_TYPE_MAX][BLOCK_TROUT_SIZE][BLOCK_TROUT_SIZE] = {
 * 変数宣言
 ******************************/
 int BlockImage[E_BLOCK_IMAGE_MAX];							//ブロック画像
-BLOCK_STATE Field[FIELD_HEIGHT] [FIElD_WIDTH];				//フィールド配列
+BLOCK_STATE Field[FIELD_HEIGHT] [FIELD_WIDTH];				//フィールド配列
 BLOCK_STATE Next[BLOCK_TROUT_SIZE] [BLOCK_TROUT_SIZE];		//待機状態のブロック
 BLOCK_STATE Stock[BLOCK_TROUT_SIZE][BLOCK_TROUT_SIZE];		//ストックのブロック
 BLOCK_STATE DropBlock[BLOCK_TROUT_SIZE][BLOCK_TROUT_SIZE];	//落ちるブロック
@@ -148,7 +148,7 @@ int Block_Initialize(void)
 	create_block();
 
 	//待機時間の初期化
-	WaiteTime = 0;
+	WaitTime = 0;
 	//ストックフラグの初期化
 	Stock_Flg = FALSE;
 	//生成フラグの初期化
@@ -305,7 +305,7 @@ void create_field(void)
 		{
 
 			//フィールド値の設定
-			if (j == 0 || j == FIELE_WIDTH - 1 || i == FIELD_HEIGHT - 1)
+			if (j == 0 || j == FIELD_WIDTH - 1 || i == FIELD_HEIGHT - 1)
 			{
 				Field[i][j] = E_BLOCK_WALL;		//壁状態にする
 			}
@@ -371,7 +371,7 @@ void move_block(void)
 	//右入力時
 	if (GetButtonDown(XINPUT_BUTTON_DPAD_RIGHT))
 	{
-		if (check_overlap(DropBlock_X DropBlock_Y + 1) == TRUE)
+		if (check_overlap(DropBlock_X+1, DropBlock_Y) == TRUE)
 		{
 			DropBlock_X++;
 		}

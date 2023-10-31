@@ -3,7 +3,7 @@
 * マクロ定義
 **************************/
 #define RANKING_INPUT_MODE	(1)
-#define RANKING_DIPS_MODE	(2)
+#define RANKING_DISP_MODE	(2)
 
 /**************************
 * 型定義
