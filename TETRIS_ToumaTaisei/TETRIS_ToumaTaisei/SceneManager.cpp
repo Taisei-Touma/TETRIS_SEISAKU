@@ -100,6 +100,36 @@ void SceneManager_Update(void)
 }
 
 /**************************
+* シーン管理機能：描画処理
+* 引数：なし
+* 戻り値：なし
+**************************/
+void SceneManager_Draw(void)
+{
+	//各画面の描画処理
+	switch(game_mode)
+	{
+	case E_TITLE:
+		TitleScene_Draw();
+		break;
+
+	case E_GAMEMAIN:
+		GameMainScene_Draw();
+		break;
+
+	case E_RANKING:
+		RankingScene_Draw();
+		break;
+
+	case E_END:
+	default:
+		EndScene_Draw();
+		break;
+
+	}
+}
+
+/**************************
 * シーン管理機能：シーン変更処理
 * 引数：変更するゲームモード
 * 戻り値：なし
