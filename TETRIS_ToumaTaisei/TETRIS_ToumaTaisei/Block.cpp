@@ -84,7 +84,7 @@ const int C_BLOCK_TABLE[BLOCK_TYPE_MAX][BLOCK_TROUT_SIZE][BLOCK_TROUT_SIZE] = {
 	{0,7,0,0},
 	{7,7,7,0},
 	{0,0,0,0},
-},//7
+}//7
 };
 
 /******************************
@@ -405,7 +405,7 @@ void change_block(void)
 	BLOCK_STATE temp[BLOCK_TROUT_SIZE][BLOCK_TROUT_SIZE] = { E_BLOCK_EMPTY };		//退避領域
 	
 	int i, j;		//ループカウンタ
-	//ストック先か空かどうか確認
+	//ストック先が空かどうか確認
 	if (Stock_Flg == TRUE)
 	{
 		for (i = 0; i < BLOCK_TROUT_SIZE; i++)
