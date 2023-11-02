@@ -36,6 +36,7 @@ void FreamControl_Initialize(void)
 	NowTime = 0;
 	Wait = 0;
 	LastTime = 0;
+	
 }
 
 /**************************
