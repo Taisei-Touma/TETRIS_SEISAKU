@@ -193,7 +193,7 @@ void file_write(void)
 	{
 		for (i = 0; i < RANKING_MAX; i++)
 		{
-			fprintf(fp, "%2d, %[^,], %10d \n", Ranking_Data[i].rank,
+			fprintf(fp, "%2d, %[^,], %10d\n", Ranking_Data[i].rank,
 				Ranking_Data[i].name, Ranking_Data[i].score);
 		}
 		fclose(fp);
@@ -228,7 +228,7 @@ void ranking_sort(void)
 	}
 
 	//‡ˆÊ‚ðã‚©‚ç‚Ó‚Á‚Ä‚¢‚­
-	for (j = 0; i < RANKING_MAX; i++)
+	for (i = 0; i < RANKING_MAX; i++)
 	{
 		Ranking_Data[i].rank = i + 1;
 	}
