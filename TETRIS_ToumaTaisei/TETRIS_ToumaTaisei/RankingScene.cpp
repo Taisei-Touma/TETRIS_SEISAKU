@@ -183,7 +183,7 @@ void file_write(void)
 	int i;
 
 	OutputDebugString("ファイルを書き込みます");
-	fopen_s(&fp, RANKING_FILE, "W");
+	fopen_s(&fp, RANKING_FILE, "w");
 
 	if (fp == NULL)
 	{
@@ -279,6 +279,7 @@ void ranking_input_name(void)
 		}
 	}
 
+	//文字を選択する
 	if (GetButtonDown(XINPUT_BUTTON_B) == TRUE)
 	{
 		if (Cursor.y < 2)
@@ -288,7 +289,7 @@ void ranking_input_name(void)
 		}
 		else if (Cursor.y < 4)
 		{
-			c = 'A' + Cursor.x + (Cursor.y * 13);
+			c = 'A' + Cursor.x + ((Cursor.y -2) * 13);
 			New_Score.name[name_num++] = c;
 		}
 		else 

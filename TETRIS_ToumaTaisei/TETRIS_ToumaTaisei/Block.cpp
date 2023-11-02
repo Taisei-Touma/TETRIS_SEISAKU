@@ -38,7 +38,7 @@ enum BLOCK_STATE
 	E_BLOCK_IMAGE_MAX,    
 };
 
-/******************************blo
+/******************************
 * 定数定義
 ******************************/
 const int C_BLOCK_TABLE[BLOCK_TYPE_MAX][BLOCK_TROUT_SIZE][BLOCK_TROUT_SIZE] = {
@@ -131,9 +131,9 @@ int Block_Initialize(void)
 		BLOCK_SIZE, BlockImage);
 
 	//SEの読み込み
-	SoundEffect[0] = LoadSoundMem("sound/SE3.mp3");
-	SoundEffect[1] = LoadSoundMem("sound/SE4.mp3");
-	SoundEffect[2] = LoadSoundMem("sound/SE5.mp3");
+	SoundEffect[0] = LoadSoundMem("sounds/SE3.mp3");
+	SoundEffect[1] = LoadSoundMem("sounds/SE4.mp3");
+	SoundEffect[2] = LoadSoundMem("sounds/SE5.wav");
 
 	//音量の調整
 	ChangeVolumeSoundMem(150, SoundEffect[0]);
@@ -301,7 +301,7 @@ void create_field(void)
 	//フィールドの生成
 	for (i = 0; i < FIELD_HEIGHT; i++)
 	{
-		for (j = 0; i < FIELD_WIDTH; j++) 
+		for (j = 0; j < FIELD_WIDTH; j++) 
 		{
 
 			//フィールド値の設定
@@ -333,7 +333,7 @@ void create_block(void)
 	//新しいブロックをセット＆次のブロックを生成
 	for (i = 0; i < BLOCK_TROUT_SIZE; i++)
 	{
-		for (j = 0; j < BLOCK_TROUT_SIZE; i++)
+		for (j = 0; j < BLOCK_TROUT_SIZE; j++)
 		{
 			DropBlock[i][j] = Next[i][j];
 			Next[i][j] = (BLOCK_STATE)C_BLOCK_TABLE[block_type][i][j];
@@ -547,7 +547,7 @@ void check_line(void)
 
 	for (i = 0; i < FIELD_HEIGHT - 1; i++)
 	{
-		for (j = 0; i < FIELD_WIDTH; j++)
+		for (j = 0; j < FIELD_WIDTH; j++)
 		{
 			//行の途中が空いているか？
 			if (Field[i][j] == E_BLOCK_EMPTY)
