@@ -193,8 +193,13 @@ void file_write(void)
 	{
 		for (i = 0; i < RANKING_MAX; i++)
 		{
-			fprintf(fp, "%2d, %[^,], %10d\n", Ranking_Data[i].rank,
+			//fprintf(fp, "%2d, %[^,], %10d\n", Ranking_Data[i].rank,
+				//Ranking_Data[i].name, Ranking_Data[i].score);
+
+			//%[^,]‚Å‚Í%s‚É‚·‚é
+			fprintf(fp, "%2d,%s,%10d\n", Ranking_Data[i].rank,
 				Ranking_Data[i].name, Ranking_Data[i].score);
+
 		}
 		fclose(fp);
 	}
