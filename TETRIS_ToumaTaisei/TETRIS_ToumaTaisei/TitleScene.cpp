@@ -33,18 +33,19 @@ int sounds[E_SOUND_MAX];
 * 引数：なし
 * 戻り値：エラー情報(-1:異常有, -1以外:正常終了)
 **************************/
-int TitleScene_Initialize(void)
+int TitleScene_Initialize(void)											//Initialize == 初期化
 {
 	int ret = 0;
 
 	cursor_number = 0;
 
-	sounds[E_TITLE_BGM] = LoadSoundMem("sounds/BGM041.ogg");
+	sounds[E_TITLE_BGM] = LoadSoundMem("sounds/BGM041.ogg");			//sounds/BGM041.oggをロードし、識別番号をsounds[E_TITLE_BGM]に格納
 
-	sounds[E_TITLE_SE_CURSOR] = LoadSoundMem("sounds/SE1.mp3");
+	sounds[E_TITLE_SE_CURSOR] = LoadSoundMem("sounds/SE1.mp3");			//sounds/SE1.mp3をロードし、識別番号をsounds[E_TITLE_SE_CURSOR]に格納
 
-	sounds[E_TITLE_SE_SELECT] = LoadSoundMem("sounds/SE2.mp3");
+	sounds[E_TITLE_SE_SELECT] = LoadSoundMem("sounds/SE2.mp3");			//sounds/SE2.mp3をロードし、識別番号をsounds[E_TITLE_SE_SELECT]に格納
 
+	//ChangeVolumeSoundMem は 再生する音の音量を設定します。0は無音、255で最大音量です。
 	ChangeVolumeSoundMem(120, sounds[E_TITLE_SE_CURSOR]);
 	ChangeVolumeSoundMem(80, sounds[E_TITLE_SE_SELECT]);
 
@@ -67,9 +68,11 @@ int TitleScene_Initialize(void)
 void TitleScene_Update(void)
 {
 	//BGMが流れていない時に再生
-	if (CheckSoundMem(sounds[E_TITLE_BGM]) != TRUE)
+	//CheckSoundMem は メモリに読み込んだ音声データが再生中か調べる　戻り値が1なら再生中、0なら再生してない。－１ならエラー
+	if (CheckSoundMem(sounds[E_TITLE_BGM]) != TRUE)								//もしE_TITLE_BGM(sounds/BGM041.ogg)が再生中なら
 	{
-		PlaySoundMem(sounds[E_TITLE_BGM], DX_PLAYTYPE_BACK, FALSE);
+		//PlaySoundMem は メモリに読み込んだ音声データを再生する
+		PlaySoundMem(sounds[E_TITLE_BGM], DX_PLAYTYPE_BACK, FALSE);				//E_TITLE_BGM(sounds/BGM041.ogg)をバックグラウンド再生する FALSEは再生位置を先頭に戻さないという意味(TRUEなら再生位置を先頭に戻す)
 	}
 
 	if (GetButtonDown(XINPUT_BUTTON_B) == TRUE)
