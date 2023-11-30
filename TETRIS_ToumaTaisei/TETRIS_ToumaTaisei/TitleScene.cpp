@@ -12,10 +12,10 @@
 **************************/
 enum
 {
-	E_TITLE_BGM,
-	E_TITLE_SE_CURSOR,
-	E_TITLE_SE_SELECT,
-	E_SOUND_MAX
+	E_TITLE_BGM,		//0
+	E_TITLE_SE_CURSOR,	//1
+	E_TITLE_SE_SELECT,	//2
+	E_SOUND_MAX			//3
 };
 
 /**************************
@@ -75,23 +75,23 @@ void TitleScene_Update(void)
 		PlaySoundMem(sounds[E_TITLE_BGM], DX_PLAYTYPE_BACK, FALSE);				//E_TITLE_BGM(sounds/BGM041.ogg)をバックグラウンド再生する FALSEは再生位置を先頭に戻さないという意味(TRUEなら再生位置を先頭に戻す)
 	}
 
-	if (GetButtonDown(XINPUT_BUTTON_B) == TRUE)
+	if (GetButtonDown(XINPUT_BUTTON_B) == TRUE)									//もしBボタンが押されたら
 	{
-		StopSoundMem(sounds[E_TITLE_BGM]);
-		PlaySoundMem(sounds[E_TITLE_SE_SELECT], DX_PLAYTYPE_BACK, FALSE);
+		StopSoundMem(sounds[E_TITLE_BGM]);										//sounds[E_TITLE_BGMの再生を中断する
+		PlaySoundMem(sounds[E_TITLE_SE_SELECT], DX_PLAYTYPE_BACK, FALSE);		//sounds[E_TITLE_SE_SELECTをバックグラウンド再生する
 
 		switch (cursor_number)
 		{
-		case 0:
-			Change_Scene(E_GAMEMAIN);
-			break;
-		case 1:
-			Change_Scene(E_RANKING);
-			break;
-		case 2:
-		default:
-			Change_Scene(E_END);
-			break;
+		case 0:								//cursor_numberが0なら
+			Change_Scene(E_GAMEMAIN);		//シーン変更処理　E_GAMEMAIN
+			break;							//このswitch分の処理を終了して次の処理に進む
+		case 1:								//cursor_numberが1なら
+			Change_Scene(E_RANKING);		//シーン変更処理　E_RANKING
+			break;							//このswitch分の処理を終了して次の処理に進む
+		case 2:								//cursor_numberが2なら
+		default:							//どの定数にも一致しなかった場合
+			Change_Scene(E_END);			//シーン変更処理　E_END
+			break;							//このswitch分の処理を終了して次の処理に進む
 		}
 	}
 
