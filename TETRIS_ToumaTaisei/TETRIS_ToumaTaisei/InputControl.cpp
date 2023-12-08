@@ -11,11 +11,11 @@
 **************************/
 enum KEY_STATE
 {
-	E_NONE,				//未入力
-	E_CLICK,			//押した瞬間
-	E_PRESS,			//押し続けてる
-	E_RELEASED,			//離した
-	E_KEY_STATE_MAX	
+	E_NONE,				//未入力        0
+	E_CLICK,			//押した瞬間    1
+	E_PRESS,			//押し続けてる  2
+	E_RELEASED,			//離した        3
+	E_KEY_STATE_MAX	    //              4
 };
 
 /**************************
@@ -103,16 +103,16 @@ void InputControl_Update(void)
 /**************************************************************
 * 入力制御機能：押されているか判定処理
 * 引数：XINPUTのボタン情報
-* XINPUT_BUTTON_DPAD_UP					(0)			//デジタル方向ボタン上
-* XINPUT_BUTTON_DPAD_DOWN			(1)			//デジタル方向ボタン下
-* XINPUT_BUTTON_DPAD_LEFT			(2)			//デジタル方向ボタン左
-* XINPUT_BUTTON_DPAD_RIGHT			(3)			//デジタル方向ボタン右
-* XINPUT_BUTTON_START				(4)			//STARTボタン
-* XINPUT_BUTTON_BACK				(5)			//BACKボタン
-* XINPUT_BUTTON_LEFT_THUMB			(6)			//左スティック押し込み
-* XINPUT_BUTTON_RIGHT_THUMB			(7)			//右スティック押し込み
-* XINPUT_BUTTON_LEFT_SHOULDER		(8)			//LBボタン
-* XINPUT_BUTTON_RIGHT_SHOULDER		(9)			//RBボタン
+* XINPUT_BUTTON_DPAD_UP					(0)		//デジタル方向ボタン上
+* XINPUT_BUTTON_DPAD_DOWN				(1)		//デジタル方向ボタン下
+* XINPUT_BUTTON_DPAD_LEFT				(2)		//デジタル方向ボタン左
+* XINPUT_BUTTON_DPAD_RIGHT				(3)		//デジタル方向ボタン右
+* XINPUT_BUTTON_START					(4)			//STARTボタン
+* XINPUT_BUTTON_BACK					(5)			//BACKボタン
+* XINPUT_BUTTON_LEFT_THUMB				(6)		//左スティック押し込み
+* XINPUT_BUTTON_RIGHT_THUMB				(7)		//右スティック押し込み
+* XINPUT_BUTTON_LEFT_SHOULDER			(8)			//LBボタン
+* XINPUT_BUTTON_RIGHT_SHOULDER			(9)			//RBボタン
 * XINPUT_BUTTON_A						(12)	//Aボタン
 * XINPUT_BUTTON_B						(13)	//Bボタン
 * XINPUT_BUTTON_X						(14)	//Xボタン

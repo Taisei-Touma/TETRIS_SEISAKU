@@ -31,7 +31,7 @@ int sounds[E_SOUND_MAX];
 /**************************
 * タイトル画面：初期化処理
 * 引数：なし
-* 戻り値：エラー情報(-1:異常有, -1以外:正常終了)
+* 戻り値：エラー情報(ret)(-1:異常有, -1以外:正常終了)
 **************************/
 int TitleScene_Initialize(void)											//Initialize == 初期化
 {
@@ -69,7 +69,7 @@ void TitleScene_Update(void)
 {
 	//BGMが流れていない時に再生
 	//CheckSoundMem は メモリに読み込んだ音声データが再生中か調べる　戻り値が1なら再生中、0なら再生してない。－１ならエラー
-	if (CheckSoundMem(sounds[E_TITLE_BGM]) != TRUE)								//もしE_TITLE_BGM(sounds/BGM041.ogg)が再生中なら
+	if (CheckSoundMem(sounds[E_TITLE_BGM]) != TRUE)								//もしE_TITLE_BGM(sounds/BGM041.ogg)が再生中ではない
 	{
 		//PlaySoundMem は メモリに読み込んだ音声データを再生する
 		PlaySoundMem(sounds[E_TITLE_BGM], DX_PLAYTYPE_BACK, FALSE);				//E_TITLE_BGM(sounds/BGM041.ogg)をバックグラウンド再生する FALSEは再生位置を先頭に戻さないという意味(TRUEなら再生位置を先頭に戻す)
@@ -95,31 +95,31 @@ void TitleScene_Update(void)
 		}
 	}
 
-	if (GetButtonDown(XINPUT_BUTTON_DPAD_UP) == TRUE)
+	if (GetButtonDown(XINPUT_BUTTON_DPAD_UP) == TRUE)							//もし上ボタンが押されたら
 	{
-		PlaySoundMem(sounds[E_TITLE_SE_CURSOR], DX_PLAYTYPE_NORMAL, FALSE);
+		PlaySoundMem(sounds[E_TITLE_SE_CURSOR], DX_PLAYTYPE_NORMAL, FALSE);		//効果音をノーマル再生 FALSEは再生位置を先頭に戻さないという意味
 
-		if (cursor_number <= 0)
+		if (cursor_number <= 0)		//cursor_numberが0以下なら
 		{
-			cursor_number = 0;
+			cursor_number = 0;		//cursor_numberを0にする
 		}
-		else
+		else                        //cursor_numberが0より大きいなら
 		{
-			cursor_number--;
+			cursor_number--;		//cursor_numberを1減らす
 		}
 
 	}
-	if (GetButtonUp(XINPUT_BUTTON_DPAD_DOWN) == TRUE)
+	if (GetButtonUp(XINPUT_BUTTON_DPAD_DOWN) == TRUE)							//もし下ボタンが押されたら
 	{
-		PlaySoundMem(sounds[E_TITLE_SE_CURSOR], DX_PLAYTYPE_NORMAL, FALSE);
+		PlaySoundMem(sounds[E_TITLE_SE_CURSOR], DX_PLAYTYPE_NORMAL, FALSE);		//効果音をノーマル再生 FALSEは再生位置を先頭に戻さないという意味
 
-		if (cursor_number >= 2)
+		if (cursor_number >= 2)		//cursor_numberが2以上なら
 		{
-			cursor_number = 2;
+			cursor_number = 2;		//cursor_numberを2にする
 		}
-		else
+		else						//cursor_numberが2より小さいなら
 		{
-			cursor_number++;
+			cursor_number++;		//cursor_numberを1増やす
 		}
 	}
 }
@@ -139,4 +139,5 @@ void TitleScene_Draw(void)
 	SetFontSize(20);
 
 	DrawCircle(275, 325 + (cursor_number * 50), 15, GetColor(255, 0, 0));
+         /*x座標*/          /*y座標*/        /*半径*/     /*色*/
 }
