@@ -131,13 +131,38 @@ void TitleScene_Update(void)
 **************************/
 void TitleScene_Draw(void)
 {
+	int startc = GetColor(255, 255, 255);
+	int rankingc = GetColor(255, 255, 255);
+	int endc = GetColor(255, 255, 255);
+	
+	/*if (cursor_number == 0)
+	{
+		startc = GetColor(255, 0, 0);
+		rankingc = GetColor(255, 255, 255);
+		endc = GetColor(255, 255, 255);
+	}
+	else if (cursor_number == 1)
+	{
+		startc = GetColor(255, 255, 255);
+		rankingc = GetColor(255, 0, 0);
+		endc = GetColor(255, 255, 255);
+	}
+	else
+	{
+		startc = GetColor(255, 255, 255);
+		rankingc = GetColor(255, 255, 255);
+		endc = GetColor(255, 0, 0);
+	}*/
+
+	//文字を表示
 	SetFontSize(50);
 	DrawString(100, 100, "テトリス", GetColor(255, 255, 255));
-	DrawString(300, 300, "スタート", GetColor(255, 255, 255));
-	DrawString(300, 350, "ランキング", GetColor(255, 255, 255));
-	DrawString(300, 400, "エンド", GetColor(255, 255, 255));
+	DrawString(300, 300, "スタート", startc);
+	DrawString(300, 350, "ランキング", rankingc);
+	DrawString(300, 400, "エンド", endc);
 	SetFontSize(20);
 
+	//cursor_numberに合わせて動く赤い円　　　　　　　　　　　　　　　　　　　
 	DrawCircle(275, 325 + (cursor_number * 50), 15, GetColor(255, 0, 0));
          /*x座標*/          /*y座標*/        /*半径*/     /*色*/
 }
