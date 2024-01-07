@@ -252,7 +252,7 @@ void ranking_input_name(void)
 	int c;
 
 	//カーソル操作処理
-	if (GetButtonDown(XINPUT_BUTTON_DPAD_LEFT) == TRUE)
+	if (GetButtonDown(XINPUT_BUTTON_DPAD_LEFT) == TRUE)		//左
 	{
 		if (Cursor.x > 0)
 		{
@@ -260,7 +260,7 @@ void ranking_input_name(void)
 		}
 	}
 
-	if(GetButtonDown(XINPUT_BUTTON_DPAD_RIGHT) == TRUE)
+	if(GetButtonDown(XINPUT_BUTTON_DPAD_RIGHT) == TRUE)		//右
 	{
 		if (Cursor.x < 12)
 		{
@@ -268,7 +268,7 @@ void ranking_input_name(void)
 		}
 	}
 
-	if (GetButtonDown(XINPUT_BUTTON_DPAD_UP) == TRUE)
+	if (GetButtonDown(XINPUT_BUTTON_DPAD_UP) == TRUE)		//上
 	{
 		if (Cursor.y > 0)
 		{
@@ -276,7 +276,7 @@ void ranking_input_name(void)
 		}
 	}
 	
-	if (GetButtonDown(XINPUT_BUTTON_DPAD_DOWN) == TRUE)
+	if (GetButtonDown(XINPUT_BUTTON_DPAD_DOWN) == TRUE)		//下
 	{
 		if (Cursor.y < 4)
 		{
@@ -285,7 +285,7 @@ void ranking_input_name(void)
 	}
 
 	//文字を選択する
-	if (GetButtonDown(XINPUT_BUTTON_B) == TRUE)
+	if (GetButtonDown(XINPUT_BUTTON_B) == TRUE)			//Bボタンが押されたら
 	{
 		if (Cursor.y < 2)
 		{
